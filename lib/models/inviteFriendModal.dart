@@ -6,17 +6,46 @@ class InviteFriendBottomModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18.0),
-      child: Column(
-        children: [
-          Container(
-            margin: const EdgeInsets.only(top: 5.0),
-            child: SvgPicture.asset(
-              "assets/images/modalTopBar.svg",
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xFFAF55F5),
+            Color(0xFFF555C8),
+          ],
+        )),
+        child: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 5.0),
+              child: SvgPicture.asset(
+                "assets/images/modalTopBar.svg",
+              ),
             ),
-          ),
-        ],
+            Expanded(
+              child: Column(
+                children: [
+                  Wrap(
+                    children: [
+                      Image.asset(
+                        "assets/images/inviteLogo.png",
+                      ),
+                      const Text(
+                        "Invite your Friends!",
+                        style: TextStyle(),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
