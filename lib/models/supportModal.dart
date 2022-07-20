@@ -34,18 +34,21 @@ class SupportBottomModal extends StatelessWidget {
                 SvgPicture.asset(
                   "assets/images/supportLogo.svg",
                 ),
-                Wrap(
-                  children: const [
-                    SupportList(
-                      supportText: "Issues with your profile?",
-                    ),
-                    SupportList(
-                      supportText: "Trouble contacting an owner?",
-                    ),
-                    SupportList(
-                      supportText: "Want to report a fake account?",
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                  child: Column(
+                    children: const [
+                      SupportList(
+                        supportText: "Issues with your profile?",
+                      ),
+                      SupportList(
+                        supportText: "Trouble contacting an owner?",
+                      ),
+                      SupportList(
+                        supportText: "Want to report a fake account?",
+                      ),
+                    ],
+                  ),
                 ),
                 TextButton(
                   onPressed: () {},
@@ -69,6 +72,7 @@ class SupportBottomModal extends StatelessWidget {
                         fontSize: 16.0,
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
+                        fontFamily: "Avenir",
                       ),
                     ),
                   ),

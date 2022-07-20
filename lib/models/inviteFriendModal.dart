@@ -1,6 +1,7 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:flutter_auth/models/contactSearchModal.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -92,8 +93,17 @@ class InviteFriendBottomModal extends StatelessWidget {
                       final PermissionStatus permissionStatus =
                           await _getPermission();
                       if (permissionStatus == PermissionStatus.granted) {
-                        Get.to(
-                          ContactBottomModal(),
+                        Navigator.of(context).pop();
+                        showCupertinoModalBottomSheet(
+                          expand: false,
+                          context: context,
+                          useRootNavigator: true,
+                          builder: (context) {
+                            return const ContactBottomModal(
+                              searchText: "Search for your friends",
+                              placeholderText: "Type your friend’s name",
+                            );
+                          },
                         );
                       }
                     },

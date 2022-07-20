@@ -56,3 +56,5 @@ final kborderStyle = OutlineInputBorder(
     width: 1.5,
   ),
 );
+
+const kFontFamily = "Avenir";

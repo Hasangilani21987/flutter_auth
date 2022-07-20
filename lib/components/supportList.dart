@@ -10,14 +10,13 @@ class SupportList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 20.0),
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
       child: Row(
         children: [
           SvgPicture.asset(
             "assets/images/bulletIcon.svg",
           ),
           const SizedBox(
-            width: 15.0,
+            width: 10.0,
           ),
           Text(
             textAlign: TextAlign.justify,

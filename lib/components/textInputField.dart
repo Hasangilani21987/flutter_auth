@@ -7,8 +7,8 @@ class TextInputField extends StatelessWidget {
     this.inputTextStytle,
     this.autocorrect = true,
     this.enableSuggestions = true,
-    required this.inputController,
     required this.inputDecoration,
+    this.onChanged,
   }) : super(key: key);
 
   final bool autocorrect;
@@ -16,16 +16,16 @@ class TextInputField extends StatelessWidget {
   final TextInputType? keyboard;
   final TextStyle? inputTextStytle;
   final InputDecoration inputDecoration;
-  final TextEditingController inputController;
+  final Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: TextFormField(
+        onChanged: onChanged,
         style: inputTextStytle,
         keyboardType: keyboard,
         autocorrect: autocorrect,
-        controller: inputController,
         cursorColor: Colors.black,
         decoration: inputDecoration,
         enableSuggestions: enableSuggestions,
