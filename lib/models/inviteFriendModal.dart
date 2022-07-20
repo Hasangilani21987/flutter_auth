@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,6 +20,7 @@ class InviteFriendBottomModal extends StatelessWidget {
     if (permission != PermissionStatus.granted) {
       final Map<Permission, PermissionStatus> permissionStatus =
           await [Permission.contacts].request();
+      // print(permissionStatus);
       return permissionStatus[Permission.contacts];
     } else {
       return Permission;
