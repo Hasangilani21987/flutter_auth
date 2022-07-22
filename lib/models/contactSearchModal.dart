@@ -1,10 +1,12 @@
 import 'dart:async';
-import 'package:contacts_service/contacts_service.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_auth/components/textInputField.dart';
-import 'package:flutter_auth/globals/lists.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import '../constants/types.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_auth/globals/lists.dart';
+import 'package:contacts_service/contacts_service.dart';
+import 'package:flutter_auth/screens/reviewScreen.dart';
+import 'package:flutter_auth/components/textInputField.dart';
 
 class ContactBottomModal extends StatefulWidget {
   final String searchText;
@@ -182,39 +184,52 @@ class _ContactBottomModalState extends State<ContactBottomModal> {
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) {
                                 final contact = contactsList[index];
-                                return ListTile(
-                                  contentPadding:
-                                      const EdgeInsets.symmetric(horizontal: 0),
-                                  title: Text(
-                                    contact.displayName.toString(),
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontFamily: kFontFamily,
-                                      fontWeight: FontWeight.w500,
-                                      decoration: TextDecoration.none,
+                                return GestureDetector(
+                                  onTap: () {
+                                    Get.to(
+                                      const ReviewScreen(),
+                                    );
+                                    contactName.value =
+                                        contact.displayName.toString();
+
+                                    contact.phones!.forEach((element) {
+                                      print(element.value);
+                                    });
+                                  },
+                                  child: ListTile(
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 0),
+                                    title: Text(
+                                      contact.displayName.toString(),
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: kFontFamily,
+                                        fontWeight: FontWeight.w500,
+                                        decoration: TextDecoration.none,
+                                      ),
                                     ),
-                                  ),
-                                  leading: (contact.avatar != null &&
-                                          contact.avatar!.isNotEmpty)
-                                      ? CircleAvatar(
-                                          backgroundImage: MemoryImage(
-                                            contact.avatar!,
-                                          ),
-                                        )
-                                      : CircleAvatar(
-                                          backgroundColor:
-                                              const Color(0xFFFDDB64),
-                                          child: Text(
-                                            contact.initials(),
-                                            style: const TextStyle(
-                                              fontSize: 14,
-                                              fontFamily: kFontFamily,
-                                              fontWeight: FontWeight.w500,
-                                              decoration: TextDecoration.none,
-                                              color: Colors.white,
+                                    leading: (contact.avatar != null &&
+                                            contact.avatar!.isNotEmpty)
+                                        ? CircleAvatar(
+                                            backgroundImage: MemoryImage(
+                                              contact.avatar!,
+                                            ),
+                                          )
+                                        : CircleAvatar(
+                                            backgroundColor:
+                                                const Color(0xFFFDDB64),
+                                            child: Text(
+                                              contact.initials(),
+                                              style: const TextStyle(
+                                                fontSize: 14,
+                                                fontFamily: kFontFamily,
+                                                fontWeight: FontWeight.w500,
+                                                decoration: TextDecoration.none,
+                                                color: Colors.white,
+                                              ),
                                             ),
                                           ),
-                                        ),
+                                  ),
                                 );
                               },
                             );
